@@ -59,6 +59,24 @@ Downloads解決編碼轉換、亂碼問題
 big5、utf8、utf8mb4
 uid、ulid
 ________________________________________________
+<a> 連結
+<h1~h6> 標題
+<p> 文章段落
+
+取得文字
+/text()
+
+contains 用法
+
+如果 class 很長
+
+例如
+
+<a class="JtKRv iTin5e">
+
+可以寫
+
+ //a[contains(@class,'JtKRv')]
 
 
 
