@@ -35,7 +35,6 @@ Google Dataset Search
 缺點：資料量大，有些欄位需要整理才能直接分析。
 ------------------------------------------------------
 資料集 2
-
 資料集名稱Psychological Manipulation Conversations Dataset
 
 來源平台Kaggle Datasets
@@ -65,4 +64,5 @@ Google Dataset Search
 1.資料來自資料集整理，可能存在偏差
 
 2.部分對話情境可能不完整
+
 
