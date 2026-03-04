@@ -36,9 +36,33 @@ Google Dataset Search
 ------------------------------------------------------
 資料集 2
 
+資料集名稱Psychological Manipulation Conversations Dataset
 
+來源平台Kaggle Datasets
 
+資料格式JSON 
 
+主要欄位
+1.conversation_id（對話編號）
+2.speaker（說話者）
+3.message（對話內容）
+4.manipulation_type（操控類型）
+5.label（是否為心理操控）
+6.timestamp（時間）
 
+這份資料可以用來研究 心理操控或情緒操控的對話模式
 
+優點：
+
+1.資料結構清楚（JSON格式）
+
+2.適合 AI / NLP（自然語言處理）研究
+
+3.對話資料具有研究價值
+
+缺點：
+
+1.資料來自資料集整理，可能存在偏差
+
+2.部分對話情境可能不完整
 
