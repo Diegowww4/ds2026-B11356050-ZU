@@ -1,0 +1,10 @@
+{
+  "project_name": "Diegowww4 的項目",
+  "region": "ap-southeast-2",
+  "features": [
+    "Supabase project created",
+    "students table created",
+    "Docker compose setup",
+    "WSL 2 environment"
+  ]
+}
