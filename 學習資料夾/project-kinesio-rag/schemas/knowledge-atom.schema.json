@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Knowledge Atom",
+  "type": "object",
+  "required": [
+    "atom_id",
+    "atom_type",
+    "title",
+    "content",
+    "body_part",
+    "evidence_level",
+    "source_id"
+  ],
+  "properties": {
+    "atom_id": {
+      "type": "string"
+    },
+    "atom_type": {
+      "type": "string",
+      "enum": [
+        "symptom",
+        "functional_limit",
+        "special_test",
+        "suspected_condition",
+        "taping_goal",
+        "taping_protocol",
+        "contraindication",
+        "red_flag",
+        "evidence_summary",
+        "citation",
+        "case_summary"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "body_part": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "taping_goal": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contraindications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_level": {
+      "type": "string",
+      "enum": [
+        "systematic_review",
+        "rct",
+        "observational",
+        "teaching_protocol",
+        "expert_note"
+      ]
+    },
+    "source_id": {
+      "type": "string"
+    },
+    "parent_doc_id": {
+      "type": "string"
+    },
+    "section_path": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    }
+  }
+}
