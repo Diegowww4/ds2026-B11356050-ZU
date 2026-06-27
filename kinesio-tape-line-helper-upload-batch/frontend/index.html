@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>肌貼與白貼查詢助手</title>
+  <meta
+    name="description"
+    content="提供常見症狀對應的貼紮查詢、注意事項、安全提醒與教學影片。"
+  >
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <script>
+    window.APP_CONFIG = {
+      API_BASE_URL: "",
+      LIFF_ID: "",
+      SITE_URL: "https://diegowww4.github.io/KinesioTape/"
+    };
+  </script>
+
+  <div class="page">
+    <header class="hero">
+      <p class="eyebrow">kinesio-tape-line-helper</p>
+      <h1>肌貼與白貼查詢助手</h1>
+      <p class="subtitle">
+        透過部位與症狀快速查詢常見貼紮方向、注意事項與教學影片，幫助使用者更快找到相關內容。
+      </p>
+      <p id="systemStatus" class="mode-chip">查詢模式載入中</p>
+    </header>
+
+    <section class="notice danger">
+      <h2>安全提醒</h2>
+      <p>
+        本網站以貼紮教學查詢為主，不提供正式醫療診斷，也不能取代醫師、物理治療師或防護員的專業判斷。
+      </p>
+      <p>
+        若出現骨折、無法行走、麻木、無力、流血、傷口、變形、劇痛、胸痛、呼吸困難、昏倒或感染，請直接就醫，不要先依賴貼紮處理。
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>症狀查詢表單</h2>
+      <form id="consultationForm" class="form">
+        <div class="form-group">
+          <label for="pain_area">主要部位</label>
+          <select id="pain_area" name="pain_area" required>
+            <option value="">請選擇</option>
+            <option value="肩頸">肩頸</option>
+            <option value="肩膀">肩膀</option>
+            <option value="手腕">手腕</option>
+            <option value="手指">手指</option>
+            <option value="下背">下背</option>
+            <option value="大腿">大腿</option>
+            <option value="小腿">小腿</option>
+            <option value="腳踝">腳踝</option>
+            <option value="足底">足底</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="pain_reason">症狀描述</label>
+          <select id="pain_reason" name="pain_reason" required>
+            <option value="">請選擇</option>
+            <option value="痠痛">痠痛</option>
+            <option value="拉傷">拉傷</option>
+            <option value="扭傷">扭傷</option>
+            <option value="挫傷">挫傷</option>
+            <option value="舉手會痛">舉手會痛</option>
+            <option value="走路會痛">走路會痛</option>
+            <option value="緊繃">緊繃</option>
+            <option value="不穩">不穩</option>
+            <option value="其他">其他</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="pain_level">疼痛分數（1～10）</label>
+          <p class="field-note">`1` 代表輕微不適，`10` 代表非常劇烈、難以忍受的疼痛。</p>
+          <input id="pain_level" name="pain_level" type="number" min="1" max="10" required>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <span>危險訊號</span>
+          <label><input type="checkbox" name="swelling"> 腫脹</label>
+          <label><input type="checkbox" name="bruise"> 瘀青</label>
+          <label><input type="checkbox" name="numbness"> 麻木</label>
+          <label><input type="checkbox" name="weakness"> 無力</label>
+          <label><input type="checkbox" name="unable_to_walk"> 無法行走</label>
+          <label><input type="checkbox" name="wound"> 傷口</label>
+          <label><input type="checkbox" name="suspected_fracture"> 疑似骨折</label>
+        </div>
+
+        <div class="form-group">
+          <label for="duration">持續時間</label>
+          <input id="duration" name="duration" type="text" placeholder="例如：2 天、1 週">
+        </div>
+
+        <input id="line_user_id" name="line_user_id" type="hidden">
+        <input id="line_display_name" name="line_display_name" type="hidden">
+
+        <button id="submitButton" type="submit" class="submit-button">送出查詢</button>
+      </form>
+    </section>
+
+    <section id="errorBox" class="notice error hidden"></section>
+
+    <section id="resultSection" class="card hidden">
+      <h2>查詢結果</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <h3>查詢摘要</h3>
+          <p id="resultTitle">-</p>
+          <p id="resultSuggestion">-</p>
+        </div>
+        <div class="result-item">
+          <h3>貼紮方向</h3>
+          <p id="resultTapeMethod">-</p>
+        </div>
+        <div class="result-item">
+          <h3>注意事項</h3>
+          <p id="resultWarning">-</p>
+        </div>
+        <div class="result-item">
+          <h3>建議就醫方向</h3>
+          <p id="resultDepartment">-</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="library-heading">
+        <div>
+          <h2>貼紮教學影片</h2>
+          <p class="section-note">
+            依大部位分類整理，方便先查詢常見情況，再搭配影片找到對應教學內容。
+          </p>
+        </div>
+      </div>
+      <div id="knowledgeLibrary" class="knowledge-library">
+        <p class="section-note">載入影片資料中...</p>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
